@@ -2,7 +2,7 @@
 #include "headers/game.h"
 #include "SDL2/SDL.h"
 
-#define FPS 60
+#define FPS 30
 #define frameDelay = 1000 / FPS
 
 void fpsCap(Uint32 starting_tick) {
@@ -18,17 +18,31 @@ int main(int argc, char *argv[]) {
     int endTick;
 
     Game game = Game();
-    game.init("Stars", 1600, 1200, true);
+    game.init("Stars", 30000, 1080, false);
 
-
-    while(true) {
+    SDL_Event event;
+    bool isRunning = true;
+    while(isRunning) {
         startingTick = SDL_GetTicks();
+        
+        SDL_PollEvent(&event);
+        switch (event.type) {
+            case SDL_QUIT : 
+                isRunning = false;
+                break;
+            default:
+                break;
+        }
+
         game.clearRenderer();
         game.update();
         game.render();
+
+        fpsCap(startingTick);
     }
 
 
+    game.clean();
 
-
+    return 0;
 }

@@ -1,10 +1,16 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
+#include <time.h>
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_ttf.h"
+
+
+#include "star.h"
+
 
 
 
@@ -25,5 +31,9 @@ class Game {
         SDL_Renderer *renderer;
         SDL_Window *window;
         SDL_Event event;
+
+        std::vector<Star> vect; // to add projectiles
+
+        int w, h;
 
 };
