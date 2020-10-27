@@ -14,13 +14,13 @@
 
 
 
-class Game {
+class UI {
 
     public:
-        Game();
+        UI();
 
 
-        int init(const char *title, int w, int h, bool fullscreen);
+        int init(const char *title, int w, int h, int stars, bool fullscreen);
 
         void update();
         void render();

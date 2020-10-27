@@ -1,4 +1,4 @@
-OBJS = main.cpp game.cpp star.cpp
+OBJS = main.cpp ui.cpp star.cpp
 
 HEADERS =  -I./headers
 OBJ_NAME = ./a

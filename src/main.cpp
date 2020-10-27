@@ -1,5 +1,6 @@
 #include <iostream>
-#include "headers/game.h"
+#include <stdlib.h>
+#include "headers/ui.h"
 #include "SDL2/SDL.h"
 
 #define FPS 30
@@ -17,8 +18,18 @@ int main(int argc, char *argv[]) {
     uint32_t startingTick;
     int endTick;
 
-    Game game = Game();
-    game.init("Stars", 30000, 1080, false);
+    UI ui = UI();
+
+    if (argc == 1) {
+        ui.init("Stars", 1920, 1080, 300, false);
+    } else if (argc == 4) {
+        ui.init("Stars", atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), false);
+    } else {
+        std::cout << "INVALID ARGUMENT, INPUT IS: \nWIDTH(px) HEIGHT(px) STARS(amount)" << std::endl;
+        return -1;
+    }
+
+ 
 
     SDL_Event event;
     bool isRunning = true;
@@ -34,15 +45,15 @@ int main(int argc, char *argv[]) {
                 break;
         }
 
-        game.clearRenderer();
-        game.update();
-        game.render();
+        ui.clearRenderer();
+        ui.update();
+        ui.render();
 
         fpsCap(startingTick);
     }
 
 
-    game.clean();
+    ui.clean();
 
     return 0;
 }

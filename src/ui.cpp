@@ -1,4 +1,4 @@
-#include "headers/game.h"
+#include "headers/ui.h"
 
 #include <iostream> 
 #include <windows.h>
@@ -31,12 +31,12 @@ HWND get_wallpaper_window() {
         return wallpaper_hwnd;
 }
 
-Game::Game() {
+UI::UI() {
 
 }
 
 
-int Game::init(const char *title, int w, int h, bool fullscreen) {
+int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     int flags = 0;
     this->w = w;
     this->h = h;
@@ -63,8 +63,8 @@ int Game::init(const char *title, int w, int h, bool fullscreen) {
     }
 
     srand (time(NULL));
-
-    for (int i = 0; i < 1000; i++) {
+    std::cout << stars << std::endl;
+    for (int i = 0; i < stars; i++) {
         int size = rand() %  3 + 1;
         vect.push_back(Star(renderer, rand() %  w + 1, rand() %  h + 1, size, size));
     }
@@ -72,7 +72,7 @@ int Game::init(const char *title, int w, int h, bool fullscreen) {
     return 0;
 }
 
-void Game::update() {
+void UI::update() {
     int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
         it->update();
@@ -91,19 +91,17 @@ void Game::update() {
     // }
 }
 
-void Game::render() {
+void UI::render() {
     SDL_RenderPresent(renderer);
 }
 
-void Game::clearRenderer() {
+void UI::clearRenderer() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 }
 
-void Game::clean() {
+void UI::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
 }
-
-
