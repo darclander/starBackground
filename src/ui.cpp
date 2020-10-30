@@ -1,7 +1,6 @@
 #include "headers/ui.h"
 
-#include <iostream> 
-#include <windows.h>
+
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
@@ -45,7 +44,7 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
         flags = SDL_WINDOW_FULLSCREEN;
     }
 
-    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+    if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         // window = SDL_CreateWindow(
         //                             title,
         //                             SDL_WINDOWPOS_CENTERED,
@@ -79,9 +78,8 @@ void UI::update() {
         it->draw();
         if (it->getX() > w) {
            // counter++;
-            int size = rand() %  3 + 1;
-            vect.push_back(Star(renderer, 0, rand() %  h + 1, size, size));
-            vect.erase(it);
+            int size = rand() %  h + 1;
+            it->move(0, size);
         }
     }
 
@@ -92,11 +90,11 @@ void UI::update() {
 }
 
 void UI::render() {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);
 }
 
 void UI::clearRenderer() {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 }
 

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
+#include <windows.h>
+#include <future> 
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"

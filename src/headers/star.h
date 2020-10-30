@@ -6,15 +6,16 @@
 class Star {
 
     public:
-        Star(SDL_Renderer *r, int x, int y, float speed, int size);
+        Star(SDL_Renderer *r, int x, int y, int speed, int size);
 
         void update();
         void draw();
 
         int getX();
+        void move(int x, int y);
 
     private:
-        float speed;
+        int speed;
         
         SDL_Renderer *renderer;
         SDL_Rect starRect;
