@@ -1,5 +1,9 @@
 #include "headers/star.h"
 
+Star::Star() {
+    
+}
+
 Star::Star(SDL_Renderer *r, int x, int y, int speed, int size) {
     this->speed = speed;
     starRect.w = size = starRect.h = size;

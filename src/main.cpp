@@ -3,6 +3,7 @@
 #include "headers/ui.h"
 #include "SDL2/SDL.h"
 
+
 #define FPS 30
 #define frameDelay = 1000 / FPS
 

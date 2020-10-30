@@ -5,6 +5,7 @@
 #include <time.h>
 #include <windows.h>
 #include <future> 
+#include <pthread.h>
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
@@ -12,6 +13,7 @@
 
 
 #include "star.h"
+#include "parallel.h"
 
 
 

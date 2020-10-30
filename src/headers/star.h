@@ -6,6 +6,7 @@
 class Star {
 
     public:
+        Star();
         Star(SDL_Renderer *r, int x, int y, int speed, int size);
 
         void update();
