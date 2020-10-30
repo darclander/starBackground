@@ -42,3 +42,4 @@
 *.ttf
 src/SDL2
 *.exe
+*.zip
