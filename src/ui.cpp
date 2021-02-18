@@ -1,13 +1,13 @@
 #include "headers/ui.h"
 
 
+// https://stackoverflow.com/questions/56132584/draw-on-windows-10-wallpaper-in-c
 
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
     HWND* ret = (HWND*)lParam;
 
-    if (p)
-        {
+    if (p) {
         // Gets the WorkerW Window after the current one.
         *ret = FindWindowEx(NULL, hwnd, "WorkerW", NULL);
         }
@@ -30,11 +30,13 @@ HWND get_wallpaper_window() {
         return wallpaper_hwnd;
 }
 
+// Has no current function.
 UI::UI() {
 
 }
 
-
+// Used a bit like a constructor, could maybe place everything in the constructor to maintain
+// Object-Oriented programming.
 int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     int flags = 0;
     this->w = w;
@@ -83,10 +85,6 @@ void UI::update() {
         }
     }
 
-    // while(counter > 0) {
-
-    //     counter--;
-    // }
 }
 
 void UI::render() {
