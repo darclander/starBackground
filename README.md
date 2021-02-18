@@ -6,4 +6,4 @@ This project is a very basic implementation of a wallpaper engine and is current
 
 [This youtube video](https://www.youtube.com/watch?v=vhugQU01Dso) will go through how it works and what the next steps are.
 
-The project is made in C++ and SDL with @[Darclander](https://github.com/darclander) as its sole contributor at the moment.
+The project is made in C++ and SDL.
