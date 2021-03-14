@@ -1,3 +1,21 @@
+-------------------------------------------------
+HOW TO EDIT THIS FILE
+
+Write your name alike @[name] where [name] is replaced with your name. 
+Then add the date. Lastly add informative text.
+
+Example: 
+
+@Xinu
+1970-1-1 | 00:00
+Maybe we should invent time?
+
+-------------------------------------------------
+
+
+See idea made by @darclander below.
+
+
 @darclander
 2021-03-14 | 23:11
 
