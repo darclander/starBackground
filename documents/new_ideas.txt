@@ -1,0 +1,9 @@
+2021-03-14 | 23:11
+
+Since SDL is able to load images / sprites (maybe add a class for handling this) the star background can be replaced with images.
+	- This would allow us to create moving images (based on framerate) to further develop the wallpaper engine.
+	- Issues: 
+		- What would scaling be like for images that are loaded into the engine? Will FULL HD be enough?
+		- How do we efficiently load images / gifs into the engine? Should there be a folder structure for this?
+		- For multiple monitors, should the engine lock onto each screen or will only the first monitor have the moving images?
+		
