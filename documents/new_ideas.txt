@@ -1,3 +1,4 @@
+@darclander
 2021-03-14 | 23:11
 
 Since SDL is able to load images / sprites (maybe add a class for handling this) the star background can be replaced with images.
