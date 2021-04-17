@@ -14,6 +14,7 @@
 
 #include "star.h"
 #include "parallel.h"
+#include "imgplayer.h"
 
 
 
@@ -37,7 +38,8 @@ class UI {
         SDL_Event event;
 
         std::vector<Star> vect; // to add projectiles
-
         int w, h;
+
+        ImgPlayer imgp = NULL;
 
 };

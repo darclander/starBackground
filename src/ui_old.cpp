@@ -48,15 +48,15 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     }
 
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-        window = SDL_CreateWindow(
-                                    title,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    w,
-                                    h,
-                                    flags
-        );
-        // window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        // window = SDL_CreateWindow(
+        //                             title,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             w,
+        //                             h,
+        //                             flags
+        // );
+        window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
         renderer = SDL_CreateRenderer(window, -1, 0);
 
         if(renderer) {
@@ -65,14 +65,26 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     }
 
     srand (time(NULL));
-    imgp = ImgPlayer(renderer);
+    std::cout << stars << std::endl;
+    for (int i = 0; i < stars; i++) {
+        int size = rand() %  3 + 1;
+        vect.push_back(Star(renderer, rand() %  w + 1, rand() %  h + 1, size, size));
+    }
 
     return 0;
 }
 
 void UI::update() {
-
-    imgp.draw();
+    int counter = 0;
+    for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
+        it->update();
+        it->draw();
+        if (it->getX() > w) {
+           // counter++;
+            int size = rand() %  h + 1;
+            it->move(0, size);
+        }
+    }
 
 }
 

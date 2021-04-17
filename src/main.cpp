@@ -42,14 +42,14 @@ int main(int argc, char *argv[]) {
 
         // --- USE THIS WHEN: You have an application window and want to be able to close it.
         
-        // SDL_PollEvent(&event);
-        // switch (event.type) {
-        //     case SDL_QUIT : 
-        //         isRunning = false;
-        //         break;
-        //     default:
-        //         break;
-        // }
+        SDL_PollEvent(&event);
+        switch (event.type) {
+            case SDL_QUIT : 
+                isRunning = false;
+                break;
+            default:
+                break;
+        }
 
         ui.clearRenderer();
         ui.update();

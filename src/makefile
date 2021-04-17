@@ -1,4 +1,4 @@
-OBJS = main.cpp ui.cpp star.cpp parallel.cpp
+OBJS = main.cpp ui.cpp star.cpp parallel.cpp imgplayer.cpp
 
 HEADERS =  -I./headers
 OBJ_NAME = ./a
