@@ -21,5 +21,7 @@ This project is based on [SDL2](https://www.libsdl.org/index.php) + [MinGW](http
 
 When MinGW is installed and you can run `mingw32-make` in your terminal. Head to the project root folder. If you open the makefile you can see that I am linking the include and lib folder to my `D:\programming`. Change that path to wherever you installed SDL. Comments should exist in the makefile.
 
+![Alt text](documents/screenshots/makefile1.png?raw=true "Makefile1")
+
 When everything is setup you should be able to run `mingw32-make` in the root folder and after compilation you can run starbg.exe in the debug folder.
 **NOTE:** You may require `SDL2.dll` and `SDL2_image.dll`. Those can be found in your `SDL\i686-w64-mingw32\bin` folder. 
