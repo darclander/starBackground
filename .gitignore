@@ -35,7 +35,7 @@
 .vscode
 
 # Images
-*.png
+
 *.jpg
 
 # Misc
