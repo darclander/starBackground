@@ -9,3 +9,17 @@ This project is a very basic implementation of a wallpaper engine and is current
 The project is made in C++ and SDL.
 
 People who want to contribute can now also make edits to the [ideas file](https://github.com/darclander/starBackground/blob/main/documents/new_ideas.txt) if they have any ideas for updates.
+
+# Installation for 64-bit windows
+
+This project is based on [SDL2](https://www.libsdl.org/index.php) + MinGW and therefore requires the following: 
+- [MinGW](https://sourceforge.net/projects/mingw/) 
+- [SDL2](https://www.libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz)
+
+**Libs for future development, not needed for normal compilation**
+- [SDL Image](https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-mingw.tar.gz)
+
+When MinGW is installed and you can run `mingw32-make` in your terminal. Head to the project root folder. If you open the makefile you can see that I am linking the include and lib folder to my `D:\programming`. Change that path to wherever you installed SDL. Comments should exist in the makefile.
+
+When everything is setup you should be able to run `mingw32-make` in the root folder and after compilation you can run starbg.exe in the debug folder.
+**NOTE:** You may require `SDL2.dll` and `SDL2_image.dll`. Those can be found in your `SDL\i686-w64-mingw32\bin` folder. 
