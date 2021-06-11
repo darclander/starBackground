@@ -12,7 +12,7 @@ People who want to contribute can now also make edits to the [ideas file](https:
 
 # Installation for 64-bit windows
 
-This project is based on [SDL2](https://www.libsdl.org/index.php) + MinGW and therefore requires the following: 
+This project is based on [SDL2](https://www.libsdl.org/index.php) + [MinGW](http://mingw-w64.org/doku.php) and therefore requires the following: 
 - [MinGW](https://sourceforge.net/projects/mingw/) 
 - [SDL2](https://www.libsdl.org/release/SDL2-devel-2.0.14-mingw.tar.gz)
 
