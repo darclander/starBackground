@@ -16,7 +16,7 @@ class Star {
         void move(int x, int y);
 
     private:
-        double speed;
+        double speed = 0;
         
         SDL_Renderer *renderer;
         SDL_Rect starRect;

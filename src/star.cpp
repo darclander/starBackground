@@ -19,7 +19,7 @@ void Star::draw() {
 }
 
 void Star::update(double dt) {
-    starRect.x += speed*dt/5;
+    starRect.x += dt*speed/5;
 }
 
 int Star::getX() {
