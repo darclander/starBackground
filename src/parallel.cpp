@@ -15,7 +15,7 @@ void * Parallel::staticEntryPoint(void * c) {
 
 void Parallel::entryPoint() {
     star.draw();
-    star.update();
+    star.update(3);
     std::cout << star.getX() << std::endl;
     Sleep(10);
 }

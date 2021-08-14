@@ -26,7 +26,7 @@ class UI {
 
         int init(const char *title, int w, int h, int stars, bool fullscreen);
 
-        void update();
+        void update(double dt);
         void render();
         void clearRenderer();
         void clean();

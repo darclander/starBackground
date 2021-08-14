@@ -35,10 +35,21 @@ int main(int argc, char *argv[]) {
 
     SDL_Event event;
     bool isRunning = true;
+
+
+    // To calculate deltaTime: https://gamedev.stackexchange.com/questions/110825/how-to-calculate-delta-time-with-sdl
+    Uint64 NOW = SDL_GetPerformanceCounter();
+    Uint64 LAST = 0;
+    double deltaTime = 0;
+
     while(isRunning) {
         // Get the number of milliseconds since the SDL library initialization.
         startingTick = SDL_GetTicks();
-        
+
+        LAST = NOW;
+        NOW = SDL_GetPerformanceCounter();
+
+        deltaTime = (double)((NOW - LAST)*1000 / (double)SDL_GetPerformanceFrequency() );        
 
         // --- USE THIS WHEN: You have an application window and want to be able to close it.
         
@@ -52,11 +63,11 @@ int main(int argc, char *argv[]) {
         // }
 
         ui.clearRenderer();
-        ui.update();
+        ui.update(deltaTime);
         ui.render();
 
         // See method-description
-        fpsCap(startingTick);
+        // fpsCap(startingTick);
     }
 
 

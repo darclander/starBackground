@@ -74,10 +74,10 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
-void UI::update() {
+void UI::update(double dt) {
     int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
-        it->update();
+        it->update(dt);
         it->draw();
         if (it->getX() > w) {
            // counter++;

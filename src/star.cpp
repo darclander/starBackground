@@ -18,8 +18,8 @@ void Star::draw() {
     SDL_RenderFillRect(renderer, &starRect);
 }
 
-void Star::update() {
-    starRect.x += speed;
+void Star::update(double dt) {
+    starRect.x += speed*dt/5;
 }
 
 int Star::getX() {
