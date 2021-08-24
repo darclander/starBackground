@@ -1,4 +1,4 @@
-@ Made my Darclander
+@ Made by Darclander
 @ If you want to help with any improvements or general comments you can look at 
 @ https://github.com/darclander/starBackground which also contains all the source code.
 
