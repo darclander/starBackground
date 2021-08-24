@@ -1,7 +1,7 @@
 #pragma once
 #include <pthread.h>
 #include <iostream>
-#include "star.h"
+#include "star.hpp"
 
 class Parallel {
 private:

@@ -1,4 +1,4 @@
-#include "headers/star.h"
+#include "headers/star.hpp"
 
 Star::Star() {
     

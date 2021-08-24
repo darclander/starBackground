@@ -12,8 +12,8 @@
 #include "SDL2/SDL_ttf.h"
 
 
-#include "star.h"
-#include "parallel.h"
+#include "star.hpp"
+#include "parallel.hpp"
 
 
 

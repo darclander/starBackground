@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "headers/ui.h"
+#include "headers/ui.hpp"
 #include "SDL2/SDL.h"
 
 
