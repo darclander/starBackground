@@ -108,15 +108,33 @@ void UI::update() {
 
 }
 
+/**
+ * Renders the UI.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::render() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);
 }
 
+/**
+ * Clears the renderer.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::clearRenderer() {
     SDL_RenderClear(renderer);
 }
 
+/**
+ * This method destroys the window and renderer in order to prevent memory leaks.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
