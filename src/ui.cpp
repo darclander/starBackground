@@ -45,6 +45,13 @@ UI::UI() {
 
 // Used a bit like a constructor, could maybe place everything in the constructor to maintain
 // Object-Oriented programming.
+/**
+ * Method to initialize the UI. This is what will run in the background instead of the 'normal' windows background.
+ * 
+ * @param title name of the window @param w width of the window @param h height of the window @param stars amount of stars 
+ * @param fullscreen a boolean for fullscreen or not
+ * @return No return value.
+ */
 int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     int flags = 0;
     this->w = w;
