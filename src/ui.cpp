@@ -8,6 +8,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
     HWND* ret = (HWND*)lParam;
 
+
     if (p) {
         // Gets the WorkerW Window after the current one.
         *ret = FindWindowEx(NULL, hwnd, "WorkerW", NULL);
@@ -32,6 +33,12 @@ HWND get_wallpaper_window() {
 }
 
 // Has no current function.
+/**
+ * Creates the UI, initialization is in UI::init
+ *
+ * @param None
+ * @return None
+ */
 UI::UI() {
 
 }
