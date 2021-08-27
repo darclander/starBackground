@@ -88,6 +88,12 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
+/**
+ * Method to update the UI. Current use is to update the stars. This means that this method moves the stars forward.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::update() {
     int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
