@@ -16,8 +16,6 @@
 #include "parallel.hpp"
 
 
-
-
 class UI {
 
     public:
