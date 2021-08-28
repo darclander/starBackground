@@ -1,4 +1,4 @@
-#include "headers/imgplayer.hpp"
+#include "imgplayer.hpp"
 
 ImgPlayer::ImgPlayer(fileformat f, const char filepath) {
     file = f;
