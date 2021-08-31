@@ -7,7 +7,13 @@
 #define FPS 30
 #define frameDelay = 1000 / FPS
 
-
+/**
+ * Limits update frequency rate. Bad implementation since it creates flickering due to
+ * not basing updating on a time but to wait for X.
+ *
+ * @param starting_tick The tick which is retrieved every while-loop.
+ * @return No return value.
+ */
 void fpsCap(Uint32 starting_tick) {
     // '1000 / FPS' is meant to be replaced with 'frameDelay'
     if ((1000 / FPS) > SDL_GetTicks() - starting_tick) {

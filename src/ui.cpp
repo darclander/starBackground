@@ -8,6 +8,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
     HWND* ret = (HWND*)lParam;
 
+
     if (p) {
         // Gets the WorkerW Window after the current one.
         *ret = FindWindowEx(NULL, hwnd, "WorkerW", NULL);
@@ -32,12 +33,25 @@ HWND get_wallpaper_window() {
 }
 
 // Has no current function.
+/**
+ * Creates the UI, initialization is in UI::init
+ *
+ * @param None
+ * @return None
+ */
 UI::UI() {
 
 }
 
 // Used a bit like a constructor, could maybe place everything in the constructor to maintain
 // Object-Oriented programming.
+/**
+ * Method to initialize the UI. This is what will run in the background instead of the 'normal' windows background.
+ * 
+ * @param title name of the window @param w width of the window @param h height of the window @param stars amount of stars 
+ * @param fullscreen a boolean for fullscreen or not
+ * @return No return value.
+ */
 int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     int flags = 0;
     this->w = w;
@@ -74,6 +88,12 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
+/**
+ * Method to update the UI. Current use is to update the stars. This means that this method moves the stars forward.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::update() {
     int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
@@ -88,15 +108,33 @@ void UI::update() {
 
 }
 
+/**
+ * Renders the UI.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::render() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderPresent(renderer);
 }
 
+/**
+ * Clears the renderer.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::clearRenderer() {
     SDL_RenderClear(renderer);
 }
 
+/**
+ * This method destroys the window and renderer in order to prevent memory leaks.
+ *
+ * @param None
+ * @return No return value.
+ */
 void UI::clean() {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
