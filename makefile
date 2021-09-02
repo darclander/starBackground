@@ -2,8 +2,8 @@ OBJS = ./src/*.cpp
 
 # Change these paths to wherever your 'i686-w64-mingw32' folder is. 
 # In my scenario it is in D:\programming\i686-w64-mingw32 and therefore the line should be: -ID:\programming   
-INC_PATH = -ID:\programming
-LIB_PATH = -LD:\programming
+INC_PATH = -IC:\MinGW
+LIB_PATH = -LC:\MinGW
 
 HEADERS =  -I./src/headers
 OBJ_NAME = ./debug/starbg

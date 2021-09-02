@@ -4,8 +4,8 @@
 #include <vector>
 #include <time.h>
 #include <windows.h>
-#include <future> 
-#include <pthread.h>
+// #include <future> 
+// #include <pthread.h>
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
@@ -13,7 +13,7 @@
 
 
 #include "star.hpp"
-#include "parallel.hpp"
+// #include "parallel.hpp"
 
 
 
