@@ -4,6 +4,14 @@
 // https://stackoverflow.com/questions/56132584/draw-on-windows-10-wallpaper-in-c
 // http://www.cplusplus.com/forum/windows/95608/
 
+/**
+ * An application-defined callback function used with the EnumWindows or EnumDesktopWindows function. 
+ * It receives top-level window handles. The WNDENUMPROC type defines a pointer to this callback function. 
+ * EnumWindowsProc is a placeholder for the application-defined function name.
+ *
+ * @param HWND - A handle to a top-level window. @param LPARAM - The application-defined value given in EnumWindows() or EnumDesktopWindows().
+ * @return To continue enumeration, the callback function must return TRUE; to stop enumeration, it must return FALSE.
+ */
 BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     HWND p = FindWindowEx(hwnd, NULL, "SHELLDLL_DefView", NULL);
     HWND* ret = (HWND*)lParam;
