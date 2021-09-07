@@ -16,6 +16,13 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
     return true;
 }
 
+/**
+ * Method used to retrieve a 'HWND' to the current wallpaper window (in windows). Currently there is an issue for some windows
+ * installations. For more information look at: https://github.com/darclander/starBackground/issues/7
+ * 
+ * @param None
+ * @return Returns a `HWND` to the wallpaper window.
+ */
 HWND get_wallpaper_window() {
         // Fetch the Progman window
         HWND progman = FindWindow("ProgMan", NULL);
