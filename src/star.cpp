@@ -22,6 +22,12 @@ void Star::update() {
     starRect.x += speed;
 }
 
+/**
+ * Get X position :)
+ *
+ * @param None
+ * @return The X position of star.
+ */
 int Star::getX() {
     return starRect.x;
 }
