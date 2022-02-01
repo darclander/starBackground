@@ -44,3 +44,6 @@ src/SDL2
 *.exe
 *.zip
 *.png
+
+build/
+external/

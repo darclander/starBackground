@@ -1,7 +1,9 @@
+#define SDL_MAIN_HANDLED
+
 #include <iostream>
 #include <stdlib.h>
 #include "headers/ui.hpp"
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 
 #define FPS 30
@@ -70,7 +72,6 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
 
 // Could implement this?
 /*
