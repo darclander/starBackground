@@ -1,8 +1,5 @@
 #include "headers/ui.hpp"
-#include <boost/asio.hpp>
-#include <boost/thread/thread.hpp>
-#include <boost/bind.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
+
 
 // https://stackoverflow.com/questions/56132584/draw-on-windows-10-wallpaper-in-c
 // http://www.cplusplus.com/forum/windows/95608/
@@ -17,17 +14,6 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
         *ret = FindWindowEx(NULL, hwnd, "WorkerW", NULL);
         }
     return true;
-}
-void hello()
-{
-    std::cout << "Hello world, I'm a thread!" << std::endl;
-}
-
-int main(int argc, char* argv[])
-{
-    boost::thread thrd(&hello);
-    thrd.join();
-    return 0;
 }
 
 HWND get_wallpaper_window() {
@@ -108,14 +94,8 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
  * @param None
  * @return No return value.
  */
-
-void thread() {
-    std::cout << "test" << std::endl;
-}
-
 void UI::update() {
-    // std::cout << &vect[0] << std::endl;
-    // int counter = 0;
+    int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
         it->update();
         it->draw();
@@ -125,21 +105,6 @@ void UI::update() {
             it->move(0, size);
         }
     }
-
-
-
-    // #pragma omp parallel for num_threads(4)
-    // for(int i = 0; i < 300; i++) {
-    //     std::cout << omp_get_thread_num() << std::endl;
-    //     vect[i].update();
-    //     vect[i].draw();
-    //     if (vect[i].getX() > w) {
-    //        // counter++;
-    //         int size = rand() %  h + 1;
-    //         vect[i].move(0, size);
-    //     }
-    // }
-
 
 }
 
