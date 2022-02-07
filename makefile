@@ -9,7 +9,8 @@ HEADERS =  -I./src/headers
 OBJ_NAME = ./debug/starbg
 INCLUDE = $(INC_PATH)\i686-w64-mingw32\include
 LIBRARY = $(LIB_PATH)\i686-w64-mingw32\lib
-FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image
+FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -fopenmp -lwsock32
+BOOST = -lboost_system -lboost_date_time -lboost_thread 
 
 all : $(OBJS)
-	g++ $(OBJS) $(INCLUDE) $(HEADERS) $(LIBRARY) $(FLAGS) -o $(OBJ_NAME)
+	g++ $(OBJS) $(INCLUDE) $(HEADERS) $(LIBRARY) $(FLAGS) -o $(OBJ_NAME) $(BOOST)
