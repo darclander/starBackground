@@ -1,8 +1,5 @@
 #include "headers/ui.hpp"
-#include <boost/asio.hpp>
-#include <boost/thread/thread.hpp>
-#include <boost/bind.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
+#include <pthread.h>
 
 // https://stackoverflow.com/questions/56132584/draw-on-windows-10-wallpaper-in-c
 // http://www.cplusplus.com/forum/windows/95608/
@@ -18,17 +15,7 @@ BOOL CALLBACK EnumWindowsProc(HWND hwnd, LPARAM lParam) {
         }
     return true;
 }
-void hello()
-{
-    std::cout << "Hello world, I'm a thread!" << std::endl;
-}
 
-int main(int argc, char* argv[])
-{
-    boost::thread thrd(&hello);
-    thrd.join();
-    return 0;
-}
 
 HWND get_wallpaper_window() {
         // Fetch the Progman window
@@ -102,20 +89,30 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
+
+struct thread_info {
+    std::vector<Star> v;
+    int i;
+};
+
+void *_update( void *ptr ) {
+    struct thread_info *args = (struct thread_info *)ptr;
+    free(ptr);
+    int i = args->i;
+    std::cout << args->v[i].getX() << std::endl;
+    args->v[i].drawRed();
+    args->v[i].update();
+}
+
+
+
 /**
  * Method to update the UI. Current use is to update the stars. This means that this method moves the stars forward.
  *
  * @param None
  * @return No return value.
  */
-
-void thread() {
-    std::cout << "test" << std::endl;
-}
-
 void UI::update() {
-    // std::cout << &vect[0] << std::endl;
-    // int counter = 0;
     for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
         it->update();
         it->draw();
@@ -125,8 +122,14 @@ void UI::update() {
             it->move(0, size);
         }
     }
+    struct thread_info args;
+    args.v = vect;
+    args.i = 0;
+    pthread_t t1;
+    int x = 1;
+    pthread_create(&t1, NULL, _update, (void*) &args);
 
-
+    pthread_join(t1, NULL);
 
     // #pragma omp parallel for num_threads(4)
     // for(int i = 0; i < 300; i++) {
@@ -139,8 +142,6 @@ void UI::update() {
     //         vect[i].move(0, size);
     //     }
     // }
-
-
 }
 
 /**

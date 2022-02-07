@@ -18,6 +18,12 @@ void Star::draw() {
     SDL_RenderFillRect(renderer, &starRect);
 }
 
+void Star::drawRed() {
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_RenderDrawRect(renderer, &starRect);
+    SDL_RenderFillRect(renderer, &starRect);
+}
+
 void Star::update() {
     starRect.x += speed;
 }

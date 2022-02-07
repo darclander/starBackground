@@ -32,6 +32,11 @@ class UI {
         void clearRenderer();
         void clean();
 
+        struct thread_info {
+            std::vector<Star> v;
+            int i;
+        };
+
     private: 
         SDL_Renderer *renderer;
         SDL_Window *window;
@@ -40,5 +45,7 @@ class UI {
         std::vector<Star> vect; // to add projectiles
 
         int w, h;
+
+
 
 };

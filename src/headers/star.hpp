@@ -11,6 +11,7 @@ class Star {
 
         void update();
         void draw();
+        void drawRed();
 
         int getX();
         void move(int x, int y);
