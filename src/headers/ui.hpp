@@ -4,7 +4,6 @@
 #include <vector>
 #include <time.h>
 #include <windows.h>
-#include <omp.h>
 // #include <future> 
 // #include <pthread.h>
 
