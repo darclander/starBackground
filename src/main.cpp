@@ -3,6 +3,11 @@
 #include "headers/ui.hpp"
 #include "SDL2/SDL.h"
 
+extern "C" {
+    #include "libavformat/avformat.h"
+    #include "libavcodec/avcodec.h"
+    #include "libswscale/swscale.h"
+}
 
 #define FPS 30
 #define frameDelay = 1000 / FPS
@@ -22,7 +27,7 @@ void fpsCap(Uint32 starting_tick) {
 }
 
 int main(int argc, char *argv[]) {
-
+    avformat_network_init();
     // Ticks for fpsCap
     uint32_t startingTick;
     int endTick;
@@ -48,14 +53,14 @@ int main(int argc, char *argv[]) {
 
         // --- USE THIS WHEN: You have an application window and want to be able to close it.
         
-        // SDL_PollEvent(&event);
-        // switch (event.type) {
-        //     case SDL_QUIT : 
-        //         isRunning = false;
-        //         break;
-        //     default:
-        //         break;
-        // }
+        SDL_PollEvent(&event);
+        switch (event.type) {
+            case SDL_QUIT : 
+                isRunning = false;
+                break;
+            default:
+                break;
+        }
 
         ui.clearRenderer();
         ui.update();
