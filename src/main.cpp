@@ -1,7 +1,15 @@
 #include <iostream>
 #include <stdlib.h>
+#include <cstdio>
 #include "headers/ui.hpp"
 #include "SDL2/SDL.h"
+
+#ifdef _WIN32
+   #include <io.h> 
+   #define access    _access_s
+#else
+   #include <unistd.h>
+#endif
 
 extern "C" {
     #include "libavformat/avformat.h"
@@ -26,7 +34,11 @@ void fpsCap(Uint32 starting_tick) {
     }
 }
 
-int main(int argc, char *argv[]) {
+bool fileExists(const std::string &filePath) {
+    return access( filePath.c_str(), 0 ) == 0;
+}
+
+int main(int argc, char **argv) {
     avformat_network_init();
     // Ticks for fpsCap
     uint32_t startingTick;
@@ -34,13 +46,38 @@ int main(int argc, char *argv[]) {
 
     UI ui = UI();
 
-    if (argc == 1) {
+    const std::vector<std::string> args(argv+1, argv + argc);
+
+    int width = 1920; // "Default" value for width.
+    int height = 1080; // "Default" value for height.
+    int stars = 300;
+
+    bool mp4 = false;
+    std::string filePath = "";
+
+    for(auto it = args.begin(), end = args.end(); it != end; ++it) {
+        if (*it == "-h" || *it == "--height") {
+            height = std::stoi(*(it + 1));
+        } else if (*it == "-w" || *it == "--width"){
+            width = std::stoi(*(it + 1));
+        } else if (*it == "--stars"){
+            stars = std::stoi(*(it + 1));
+        } else if (*it == "--mp4") {
+            mp4 = true;
+            filePath = *(it + 1);
+        }
+    }
+
+    if(mp4 && !fileExists(filePath)) {
+        return 1;
+    }
+
+    if (argc == 1 && !mp4) {
         ui.init("Stars", 1920, 1080, 300, false);
-    } else if (argc == 4) {
-        ui.init("Stars", atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), false);
+    } else if (mp4) {
+        ui.init("Stars", width, height, filePath, false);
     } else {
-        std::cout << "INVALID ARGUMENT, INPUT IS: \nWIDTH(px) HEIGHT(px) STARS(amount)" << std::endl;
-        return -1;
+        ui.init("Stars", width, height, stars, false);
     }
 
 
