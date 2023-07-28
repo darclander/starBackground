@@ -2,6 +2,8 @@
 #include <vector>
 #include <time.h>
 #include <windows.h>
+#include <thread>
+#include <atomic>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_audio.h>
@@ -24,6 +26,9 @@ class videoPlayer {
 
 
     private:
+
+        void player();
+
         AVFrame* frame;
         AVPacket packet;
         AVCodecContext* codecContext;
@@ -33,6 +38,9 @@ class videoPlayer {
         int videoStreamIndex = -1;
         SDL_Texture* texture;
         SDL_Renderer *renderer;
+        SDL_Event event;
+
+        bool isPlaying = true;
 
         const int targetFrameRate = 30; // Adjust this value to set the desired frame rate (e.g., 30 FPS)
         const int frameDelay = 1000 / targetFrameRate;

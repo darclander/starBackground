@@ -36,7 +36,7 @@ videoPlayer::videoPlayer(SDL_Renderer *r, const std::string &filePath) {
         // return 1;
     }
 
-    AVCodecContext* codecContext = avcodec_alloc_context3(videoCodec);
+    codecContext = avcodec_alloc_context3(videoCodec);
     if (!codecContext) {
         // Handle codec context allocation error
         // return 1;
@@ -58,11 +58,23 @@ videoPlayer::videoPlayer(SDL_Renderer *r, const std::string &filePath) {
                                             SDL_TEXTUREACCESS_STREAMING, codecContext->width, codecContext->height);
 }
 
+
 void videoPlayer::update() {
     while (av_read_frame(formatContext, &packet) >= 0) {
         if (packet.stream_index == videoStreamIndex) {
             avcodec_send_packet(codecContext, &packet);
             while (avcodec_receive_frame(codecContext, frame) == 0) {
+                SDL_PollEvent(&event);
+                switch (event.type) {
+                    case SDL_QUIT : 
+                        isPlaying = false;
+                        break;
+                    default:
+                        break;
+                }
+                if(!isPlaying) {
+                    return;
+                }
                 SDL_UpdateYUVTexture(texture, nullptr, frame->data[0], frame->linesize[0],
                                         frame->data[1], frame->linesize[1], frame->data[2], frame->linesize[2]);
                 SDL_RenderClear(renderer);
@@ -76,7 +88,6 @@ void videoPlayer::update() {
 
     // If we reach the end of the video stream, seek back to the beginning
     av_seek_frame(formatContext, videoStreamIndex, 0, AVSEEK_FLAG_FRAME);
-
 }
 
 videoPlayer::~videoPlayer() {
