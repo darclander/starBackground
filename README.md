@@ -1,15 +1,26 @@
 # starBackground
 
-This project is a very basic implementation of a wallpaper engine and is currently in production. The only current function is to make a star looking animation which can be seen below.
+This project is a very basic implementation of a wallpaper engine and is currently in development. The only current functionality is to make a star looking animation which can be seen below or *load* your own video files (see more details below).
 
 ![Alt text](documents/screenshots/bg.gif?raw=true "Gif")
 
-[This youtube video](https://www.youtube.com/watch?v=vhugQU01Dso) will go through how it works and what the next steps are.
+[This youtube video](https://www.youtube.com/watch?v=vhugQU01Dso) will go through how it works and what the next steps are (currently a bit outdated).
 
-The project is made in C++ and SDL.
+The project is made in C++ using SDL2 and ffmpeg.
 
-People who want to contribute can now also make edits to the [ideas file](https://github.com/darclander/starBackground/blob/main/documents/new_ideas.txt) if they have any ideas for updates.
+People who want to contribute can now also make edits to the [ideas file](https://github.com/darclander/starBackground/blob/main/documents/new_ideas.txt) if they have any ideas for updates or open an [issue](https://github.com/darclander/starBackground/issues)
 
+# Compilation
+To simplify development on windows, [MSYS2](https://www.msys2.org/) has been used in order to compile this project. The following are required:
+- [MSYS2](https://www.msys2.org/)
+- [MinGW64](https://www.mingw-w64.org/) `pacman -S mingw-w64-x86_64-toolchain`
+- [SDL2](https://www.libsdl.org/) `pacman -S mingw-w64-x86_64-SDL2` (`pacman -S mingw-w64-x86_64-SDL2_image`)
+- [FFMPEG](https://www.ffmpeg.org/) `pacman -S mingw-w64-x86_64-ffmpeg`
+- [make](https://packages.msys2.org/package/make) `pacman -S make`
+
+When all dependencies have been installed, run `make` in the root folder. The executable should then be in the `debug` folder. I have not yet found required DLLs so make sure that the mingw64 bin folder is part of your environment path.
+
+<!--- ***OUTDATED***
 # Installation for 64-bit windows
 
 This project is based on [SDL2](https://www.libsdl.org/index.php) + [MinGW](http://mingw-w64.org/doku.php) and therefore requires the following: 
@@ -25,3 +36,4 @@ When MinGW is installed, make sure to install the mingw32-make package. If you c
 
 When everything is setup you should be able to run `mingw32-make` in the root folder and after compilation you can run starbg.exe in the debug folder.
 **NOTE:** You may require `SDL2.dll` and `SDL2_image.dll`. Those can be found in your `SDL\i686-w64-mingw32\bin` folder. 
+--->
