@@ -66,8 +66,8 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
                                     title,
                                     SDL_WINDOWPOS_CENTERED,
                                     SDL_WINDOWPOS_CENTERED,
-                                    600,
-                                    600,
+                                    w,
+                                    h,
                                     flags
         );
         // window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
@@ -88,6 +88,39 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
+int UI::init(const char *title, int w, int h, std::string &filePath, bool fullscreen) {
+    int flags = 0;
+    video = true;
+    this->w = w;
+    this->h = h;
+
+    if (fullscreen) {
+        flags = SDL_WINDOW_FULLSCREEN;
+    }
+
+    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+        window = SDL_CreateWindow(
+                                    title,
+                                    SDL_WINDOWPOS_CENTERED,
+                                    SDL_WINDOWPOS_CENTERED,
+                                    w,
+                                    h,
+                                    flags
+        );
+        // window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        renderer = SDL_CreateRenderer(window, -1, 0);
+
+        if(renderer) {
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        }
+    }
+
+    vp = new videoPlayer(renderer, filePath);
+
+    return 0;
+}
+
+
 /**
  * Method to update the UI. Current use is to update the stars. This means that this method moves the stars forward.
  *
@@ -95,14 +128,18 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
  * @return No return value.
  */
 void UI::update() {
-    int counter = 0;
-    for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
-        it->update();
-        it->draw();
-        if (it->getX() > w) {
-           // counter++;
-            int size = rand() %  h + 1;
-            it->move(0, size);
+    if (video) {
+        vp->update();
+    } else {
+        int counter = 0;
+        for(std::vector<Star>::iterator it = vect.begin(); it != vect.end(); ++it) {
+            it->update();
+            it->draw();
+            if (it->getX() > w) {
+            // counter++;
+                int size = rand() %  h + 1;
+                it->move(0, size);
+            }
         }
     }
 
@@ -136,6 +173,7 @@ void UI::clearRenderer() {
  * @return No return value.
  */
 void UI::clean() {
+    delete vp;
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();

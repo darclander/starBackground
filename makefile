@@ -2,15 +2,15 @@
 OBJS = ./src/*.cpp
 
 CC=g++
-CFLAGS= -I$(IDIR) -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lavformat
+CFLAGS= -I$(IDIR) -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lavformat -lavcodec -lavutil
 
 
 IDIR = ./src/headers
-_DEPS = star.hpp ui.hpp
+_DEPS = star.hpp ui.hpp videoplayer.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 ODIR = ./obj
-_OBJ = main.o star.o ui.o 
+_OBJ = main.o star.o ui.o videoplayer.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 all: starBG
