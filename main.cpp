@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
     avformat_network_init();
 
     AVFormatContext* formatContext = nullptr;
-    if (avformat_open_input(&formatContext, "./vid.mp4", nullptr, nullptr) < 0) {
+    if (avformat_open_input(&formatContext, "./vid2.mp4", nullptr, nullptr) < 0) {
         // Handle file open error
         return 1;
     }
@@ -104,9 +104,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     // SDL_Window* window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
-    SDL_Window* window = SDL_CreateWindow("Video Player", SDL_WINDOWPOS_UNDEFINED,
-                                     SDL_WINDOWPOS_UNDEFINED, codecContext->width,
-                                     codecContext->height, SDL_WINDOW_OPENGL);
+    SDL_Window* window = SDL_CreateWindow("Video Player", SDL_WINDOWPOS_CENTERED,
+                                     SDL_WINDOWPOS_CENTERED, 500,
+                                     500, 0);
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
     SDL_Texture* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_YV12,
@@ -121,10 +121,10 @@ int main(int argc, char* argv[]) {
     const int frameDelay = 1000 / targetFrameRate;
 
     SDL_Rect destinationRect;
-    destinationRect.x = 100;    // X-coordinate of the top-left corner
-    destinationRect.y = 100;    // Y-coordinate of the top-left corner
-    destinationRect.w = 400;    // Width of the destination area
-    destinationRect.h = 300;    // Height of the destination area
+    destinationRect.x = 0;    // X-coordinate of the top-left corner
+    destinationRect.y = 0;    // Y-coordinate of the top-left corner
+    destinationRect.w = 1920;    // Width of the destination area
+    destinationRect.h = 1080;    // Height of the destination area
     
     while (isRunning) {
 
