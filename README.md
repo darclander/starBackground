@@ -18,7 +18,7 @@ Assuming all required DLLs are available the program now has updated functionali
 `--stars`: specifies the number of stars. default is 300 \
 `--mp4`: specfies file path to a video file. (**NOTE:** if video is used this overrides the "star" setting). 
 
-Example: 
+Examples: \
 `./starBG.exe -w 1920 -h 1080 --mp4 ./video.mp4` \
 `./starBG.exe -w 1920 -h 1080 --stars 1000` \
 `./starBG.exe` 
