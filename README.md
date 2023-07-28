@@ -1,6 +1,6 @@
 # starBackground
 
-This project is a very basic implementation of a wallpaper engine and is currently in development. The only current functionality is to make a star looking animation which can be seen below or *load* your own video files (see more details below).
+This project is a very basic implementation of a wallpaper engine and is currently in development. The only current functionality is to make a star looking animation which can be seen below or to *load* your own video files (see more details below).
 
 ![Alt text](documents/screenshots/bg.gif?raw=true "Gif")
 
@@ -9,6 +9,18 @@ This project is a very basic implementation of a wallpaper engine and is current
 The project is made in C++ using SDL2 and ffmpeg.
 
 People who want to contribute can now also make edits to the [ideas file](https://github.com/darclander/starBackground/blob/main/documents/new_ideas.txt) if they have any ideas for updates or open an [issue](https://github.com/darclander/starBackground/issues)
+
+# Usage
+Assuming all required DLLs are available the program now has updated functionality. You can run the program with default settings or by additional command lines (UI and monitor "detection" is still in progress). 
+
+`-w, --width`: specifies the width of the window. default is 1920
+`-h, --height`: specifies the height of the window. default is 1080
+`--stars`: specifies the number of stars. default is 300
+`--mp4`: specfies file path to a video file. (**NOTE:** if video is used this overrides the "star" setting).
+
+Example: `./starBG.exe -w 1920 -h 1080 --mp4 ./video.mp4`
+         `./starBG.exe -w 1920 -h 1080 --stars 1000`
+         `./starBG.exe`
 
 # Compilation
 To simplify development on windows, [MSYS2](https://www.msys2.org/) has been used in order to compile this project. The following are required:
