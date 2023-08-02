@@ -16,10 +16,10 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 all: starBG
 
 ./obj/%.o: ./src/%.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -O3 -c -o $@ $< $(CFLAGS)
 
 starBG: $(OBJ)
-	$(CC) -o ./debug/$@ $^ $(CFLAGS)
+	$(CC) -O3 -o ./debug/$@ $^ $(CFLAGS) 
 
 run: starBG
 	./debug/starBG

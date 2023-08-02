@@ -99,16 +99,16 @@ int UI::init(const char *title, int w, int h, std::string &filePath, bool fullsc
     }
 
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-        window = SDL_CreateWindow(
-                                    title,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    w,
-                                    h,
-                                    flags
-        );
-        // window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
-        renderer = SDL_CreateRenderer(window, -1, 0);
+        // window = SDL_CreateWindow(
+        //                             title,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             w,
+        //                             h,
+        //                             flags
+        // );
+        window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
         if(renderer) {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -116,6 +116,7 @@ int UI::init(const char *title, int w, int h, std::string &filePath, bool fullsc
     }
 
     vp = new videoPlayer(renderer, filePath);
+    vp->decodeVideo();
 
     return 0;
 }

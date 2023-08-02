@@ -5,6 +5,14 @@ videoPlayer::videoPlayer(SDL_Renderer *r, const std::string &filePath) {
     renderer = r;
     avformat_network_init();
     std::cout << "Opening file: " << filePath << std::endl;
+    destinationRect1.x = 0;    // X-coordinate of the top-left corner
+    destinationRect1.y = 0;    // Y-coordinate of the top-left corner
+    destinationRect1.w = 1920;    // Width of the destination area
+    destinationRect1.h = 1080;    // Height of the destination area
+    destinationRect2.x = 1920;    // X-coordinate of the top-left corner
+    destinationRect2.y = 0;    // Y-coordinate of the top-left corner
+    destinationRect2.w = 1920;    // Width of the destination area
+    destinationRect2.h = 1080;    // Height of the destination area
     
     if (avformat_open_input(&formatContext, filePath.c_str(), nullptr, nullptr) < 0) {
         // Handle file open error
@@ -58,6 +66,9 @@ videoPlayer::videoPlayer(SDL_Renderer *r, const std::string &filePath) {
                                             SDL_TEXTUREACCESS_STREAMING, codecContext->width, codecContext->height);
 }
 
+void videoPlayer::decodeVideo() {
+    
+}
 
 void videoPlayer::update() {
     while (av_read_frame(formatContext, &packet) >= 0) {
@@ -78,7 +89,8 @@ void videoPlayer::update() {
                 SDL_UpdateYUVTexture(texture, nullptr, frame->data[0], frame->linesize[0],
                                         frame->data[1], frame->linesize[1], frame->data[2], frame->linesize[2]);
                 SDL_RenderClear(renderer);
-                SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+                SDL_RenderCopy(renderer, texture, nullptr, &destinationRect1);
+                SDL_RenderCopy(renderer, texture, nullptr, &destinationRect2);
                 SDL_RenderPresent(renderer);
                 SDL_Delay(frameDelay); // Add frame rate limiting delay
             }

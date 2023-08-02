@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <thread>
 #include <atomic>
+#include <cstring> 
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_audio.h>
@@ -23,11 +24,12 @@ class videoPlayer {
         ~videoPlayer();
 
         void update();
+        void decodeVideo();
 
 
     private:
 
-        void player();
+
 
         AVFrame* frame;
         AVPacket packet;
@@ -39,6 +41,11 @@ class videoPlayer {
         SDL_Texture* texture;
         SDL_Renderer *renderer;
         SDL_Event event;
+
+        std::vector<SDL_Texture*> textures;
+
+        SDL_Rect destinationRect1;
+        SDL_Rect destinationRect2;
 
         bool isPlaying = true;
 
