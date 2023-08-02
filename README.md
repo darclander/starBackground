@@ -34,7 +34,7 @@ To simplify development on windows, [MSYS2](https://www.msys2.org/) has been use
 When all dependencies have been installed, run `make` in the root folder. The executable should then be in the `debug` folder. 
 
 # Required DLLs
-As per https://github.com/darclander/starBackground/issues/10 I realized I should mention the required DLLs for running the executable on windows. To run the application you need: \
+As per https://github.com/darclander/starBackground/issues/10 I realized I should mention the required DLLs for running the executable on windows. To run the application you need: 
 - `SDL2.dll`
 - `avcodec-60.dll` 
 - `avdevice-60.dll` 
