@@ -35,18 +35,18 @@ When all dependencies have been installed, run `make` in the root folder. The ex
 
 # Required DLLs
 As per https://github.com/darclander/starBackground/issues/10 I realized I should mention the required DLLs for running the executable on windows. To run the application you need: \
-- `SDL2.dll`\
-- `avcodec-60.dll` \
-- `avdevice-60.dll` \
-- `avfilter-9.dll` \
-- `avformat-60.dll` \
-- `avutil-58.dll` \
-- `libgcc_s_seh-1.dll` \
-- `libstdc++-6.dll` \
-- `libwinpthread-1.dll` \
-- `postproc-57.dll` \
-- `swresample-4.dll` \
-- `swscale-7.dll` \
+- `SDL2.dll`
+- `avcodec-60.dll` 
+- `avdevice-60.dll` 
+- `avfilter-9.dll` 
+- `avformat-60.dll` 
+- `avutil-58.dll` 
+- `libgcc_s_seh-1.dll` 
+- `libstdc++-6.dll` 
+- `libwinpthread-1.dll` 
+- `postproc-57.dll` 
+- `swresample-4.dll` 
+- `swscale-7.dll` 
 
 
 <!--- ***OUTDATED***
