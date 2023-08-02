@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     int height = 1080; // "Default" value for height.
     int stars = 300;
 
-    bool mp4 = false;
+    bool video = false;
     std::string filePath = "";
 
     for(auto it = args.begin(), end = args.end(); it != end; ++it) {
@@ -62,19 +62,20 @@ int main(int argc, char **argv) {
             width = std::stoi(*(it + 1));
         } else if (*it == "--stars"){
             stars = std::stoi(*(it + 1));
-        } else if (*it == "--mp4") {
-            mp4 = true;
+        } else if (*it == "--video") {
+            video = true;
             filePath = *(it + 1);
         }
     }
 
-    if(mp4 && !fileExists(filePath)) {
+    if(video && !fileExists(filePath)) {
+        std::cout << "Could not find file!" << std::endl;
         return 1;
     }
 
-    if (argc == 1 && !mp4) {
+    if (argc == 1 && !video) {
         ui.init("Stars", 1920, 1080, 300, false);
-    } else if (mp4) {
+    } else if (video) {
         ui.init("Stars", width, height, filePath, false);
     } else {
         ui.init("Stars", width, height, stars, false);
