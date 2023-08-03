@@ -1,15 +1,31 @@
+
 OBJS = ./src/*.cpp
 
-# Change these paths to wherever your 'i686-w64-mingw32' folder is. 
-# In my scenario it is in D:\programming\i686-w64-mingw32 and therefore the line should be: -ID:\programming   
-INC_PATH = -IC:\MinGW
-LIB_PATH = -LC:\MinGW
+CC=g++
+NANA_FLAGS=-lnana -lgdi32 -lcomdlg32 -ljpeg -lpng
+FFMPEG_FLAGS=-lavformat -lavcodec -lavutil
+CFLAGS= -I$(IDIR) -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image $(FFMPEG_FLAGS) $(NANA_FLAGS)
 
-HEADERS =  -I./src/headers
-OBJ_NAME = ./debug/starbg
-INCLUDE = $(INC_PATH)\i686-w64-mingw32\include
-LIBRARY = $(LIB_PATH)\i686-w64-mingw32\lib
-FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image
 
-all : $(OBJS)
-	g++ $(OBJS) $(INCLUDE) $(HEADERS) $(LIBRARY) $(FLAGS) -o $(OBJ_NAME)
+IDIR = ./src/headers
+_DEPS = star.hpp ui.hpp videoplayer.hpp
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+ODIR = ./obj
+_OBJ = main.o star.o ui.o videoplayer.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+all: starBG
+
+./obj/%.o: ./src/%.cpp $(DEPS)
+	$(CC) -O3 -c -o $@ $< $(CFLAGS)
+
+starBG: $(OBJ)
+	$(CC) -O3 -o ./debug/$@ $^ $(CFLAGS) 
+
+run: starBG
+	./debug/starBG
+
+clean:
+	del /s *.o
+	del starBG.exe
