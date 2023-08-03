@@ -2,7 +2,9 @@
 OBJS = ./src/*.cpp
 
 CC=g++
-CFLAGS= -I$(IDIR) -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image -lavformat -lavcodec -lavutil
+NANA_FLAGS=-lnana -lgdi32 -lcomdlg32 -ljpeg -lpng
+FFMPEG_FLAGS=-lavformat -lavcodec -lavutil
+CFLAGS= -I$(IDIR) -lmingw32 -lSDL2main -lSDL2 -lSDL2_Image $(FFMPEG_FLAGS) $(NANA_FLAGS)
 
 
 IDIR = ./src/headers

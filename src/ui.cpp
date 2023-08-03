@@ -62,15 +62,15 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     }
 
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-        window = SDL_CreateWindow(
-                                    title,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    SDL_WINDOWPOS_CENTERED,
-                                    w,
-                                    h,
-                                    flags
-        );
-        // window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
+        // window = SDL_CreateWindow(
+        //                             title,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             SDL_WINDOWPOS_CENTERED,
+        //                             w,
+        //                             h,
+        //                             flags
+        // );
+        window = SDL_CreateWindowFrom((void*)get_wallpaper_window());
         renderer = SDL_CreateRenderer(window, -1, 0);
 
         if(renderer) {
