@@ -16,10 +16,10 @@ Assuming all required DLLs are available the program now has updated functionali
 `-w, --width`: specifies the width of the window. default is 1920 \
 `-h, --height`: specifies the height of the window. default is 1080 \
 `--stars`: specifies the number of stars. default is 300 \
-`--mp4`: specfies file path to a video file. (**NOTE:** if video is used this overrides the "star" setting). 
+`--video`: specfies file path to a video file. (**NOTE:** if video is used this overrides the "star" setting). 
 
 Examples: \
-`./starBG.exe -w 1920 -h 1080 --mp4 ./video.mp4` \
+`./starBG.exe -w 1920 -h 1080 --video ./video.mp4` \
 `./starBG.exe -w 1920 -h 1080 --stars 1000` \
 `./starBG.exe` 
 
