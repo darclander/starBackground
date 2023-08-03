@@ -3,6 +3,7 @@
 This project is a very basic implementation of a wallpaper engine and is currently in development. The only current functionality is to make a star looking animation which can be seen below or to *load* your own video files (see more details below).
 
 ![Alt text](documents/screenshots/bg.gif?raw=true "Gif")
+![Alt text](documents/screenshots/video.gif?raw=true "Gif")
 
 [This youtube video](https://www.youtube.com/watch?v=vhugQU01Dso) will go through how it works and what the next steps are (currently a bit outdated).
 
