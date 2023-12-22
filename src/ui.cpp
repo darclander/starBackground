@@ -47,7 +47,7 @@ HWND get_wallpaper_window() {
         return wallpaper_hwnd;
 }
 
-// Has no current function.
+// Has no current functionality... Replace init with this?
 /**
  * Creates the UI, initialization is in UI::init
  *
@@ -103,6 +103,13 @@ int UI::init(const char *title, int w, int h, int stars, bool fullscreen) {
     return 0;
 }
 
+/**
+ * Initializes the UI, TODO: could be moved to UI::UI()...?
+ * 
+ * @param title `const char *` name of the window @param w width of the window @param h height of the window 
+ * @param filePath video to be played @param fullscreen a boolean for fullscreen or not
+ * @return No return value.
+ */
 int UI::init(const char *title, int w, int h, std::string &filePath, bool fullscreen) {
     int flags = 0;
     video = true;
