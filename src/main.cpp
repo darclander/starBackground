@@ -34,6 +34,13 @@ void fpsCap(Uint32 starting_tick) {
     }
 }
 
+/**
+ * Examines if a file exists. Support has been added for both linux and windows
+ * in case of cross-platform-development.
+ *
+ * @param None
+ * @return Returns true if file could be accessed, false otherwise.
+ */
 bool fileExists(const std::string &filePath) {
     return access( filePath.c_str(), 0 ) == 0;
 }
