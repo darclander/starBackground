@@ -1,6 +1,11 @@
 #include "videoplayer.hpp"
 
-
+/**
+ * Constructor for the videoPlayer.
+ *
+ * @param renderer `SDL_Renderer*` to be used @param filePath `const std::string&` to the video file being played.
+ * @return No return value.
+ */
 videoPlayer::videoPlayer(SDL_Renderer *r, const std::string &filePath) {
     renderer = r;
     avformat_network_init();
