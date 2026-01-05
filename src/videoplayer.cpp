@@ -109,7 +109,7 @@ void videoPlayer::update() {
 
 videoPlayer::~videoPlayer() {
     av_frame_free(&frame);
-    avcodec_close(codecContext);
+    avcodec_free_context(&codecContext);
     avformat_close_input(&formatContext);
     avformat_network_deinit();
     SDL_DestroyTexture(texture);
