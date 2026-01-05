@@ -30,6 +30,10 @@ $(ODIR)/%.o: ./src/%.cpp $(DEPS)
 starBG: $(OBJ)
 	$(CC) -O3 -o ./bin/$@ $^ $(CFLAGS)
 
+prepare:
+	mkdir -p bin/
+	mkdir -p obj/
+
 run: starBG
 	./bin/starBG
 
@@ -38,6 +42,9 @@ clean:
 	rm -f bin/starBG.exe
 
 install:
-	mkdir -p bin/
+	pacman -S --needed --noconfirm mingw-w64-x86_64-toolchain
+	pacman -S --needed --noconfirm mingw-w64-x86_64-SDL2
+	pacman -S --needed --noconfirm mingw-w64-x86_64-SDL2_image
+	pacman -S --needed --noconfirm mingw-w64-x86_64-ffmpeg
 
-.PHONY: install clean
+.PHONY: install clean prepare
